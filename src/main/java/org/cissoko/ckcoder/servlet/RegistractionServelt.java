@@ -56,8 +56,7 @@ public class RegistractionServelt extends HttpServlet {
         Repository repository = Repository.getInstance();
         repository.save(account);
 
-        req.setAttribute("accountId", account.getId());
         logger.error("save account " + account.toString());
-        req.getRequestDispatcher("/displayAccount").forward(req, resp);
+        resp.sendRedirect("/displayAccount" + "?accountId=" + account.getId());
     }
 }
